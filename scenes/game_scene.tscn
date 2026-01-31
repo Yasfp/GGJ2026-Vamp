@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bl2u8ir7cset5"]
+
+[ext_resource type="PackedScene" uid="uid://chk4j6g0xdb4y" path="res://scenes/player_1.tscn" id="1_brupb"]
+[ext_resource type="Texture2D" uid="uid://wf2b4yx8h2m0" path="res://assets/asset_temp/Sem título.png" id="1_onqr8"]
+[ext_resource type="Script" uid="uid://b84icfcny6xca" path="res://Script/camera_2d.gd" id="3_ycayy"]
+[ext_resource type="PackedScene" uid="uid://b46eaa1fsy8ud" path="res://scenes/player_2.tscn" id="4_bw6k5"]
+
+[node name="game_scene" type="Node2D" unique_id=215251995]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=172505222]
+position = Vector2(-0.5, -1)
+scale = Vector2(2.7591913, 2.4429529)
+texture = ExtResource("1_onqr8")
+
+[node name="player_1" parent="." unique_id=1526809041 instance=ExtResource("1_brupb")]
+movement_speed = 150.0
+
+[node name="player" parent="." unique_id=75589651 instance=ExtResource("4_bw6k5")]
+position = Vector2(161, 0)
+movement_speed = 150.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1272904100]
+physics_interpolation_mode = 1
+zoom = Vector2(2, 2)
+script = ExtResource("3_ycayy")
