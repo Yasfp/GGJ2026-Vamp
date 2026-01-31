@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @export var movement_speed : float = 500
 var character_diraction : Vector2
+var sprint_bar : float = 100
+var sprint_speed : float = 300
+var sprint = false
+
 
 func _physics_process(delta):
 	character_diraction.x = Input.get_axis("move_left_2","move_right_2")
@@ -11,12 +15,12 @@ func _physics_process(delta):
 	if character_diraction.x > 0: %sprite.flip_h = false
 	elif character_diraction.x < 0: %sprite.flip_h = true
 	
+	
 	if character_diraction:
 		velocity = character_diraction * movement_speed
 		if %sprite.animation != "Walk":%sprite.animation = "Walk"
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, movement_speed)
 		if %sprite.animation != "Idle":%sprite.animation = "Idle"
-		
 	move_and_slide()
 	
