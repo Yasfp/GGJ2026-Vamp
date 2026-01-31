@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b46eaa1fsy8ud"]
 
-[ext_resource type="Script" uid="uid://d17f8hhsyk1ql" path="res://Script/player2_movement.gd" id="1_s551d"]
+[ext_resource type="Script" uid="uid://d17f8hhsyk1ql" path="res://Script/player2_script.gd" id="1_s551d"]
 [ext_resource type="Texture2D" uid="uid://bdosc7s6doyiy" path="res://assets/asset_temp/DinoSprites - mort.png" id="2_yjax8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
