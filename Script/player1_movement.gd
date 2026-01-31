@@ -1,14 +1,20 @@
 extends CharacterBody2D
 
-@export var movement_speed : float = 500
+@export var movement_speed : float = 150
 var character_diraction : Vector2
 @onready var sprint_bar = $sprite/ProgressBar
-var sprint_speed : float = 300
+@export var initial_sprint_speed : float = 300
+var sprint_speed = initial_sprint_speed
 var sprint = false
+
+var can_regen = false
+var time_to_wait = 1.5
+var start_timer = 0
+var can_start_timer = true
 
 func _ready() -> void:
 	sprint_bar.value = sprint_bar.max_value
-
+	sprint_bar.value = sprint_bar.max_value
 
 func _physics_process(delta):
 	#pega inout da direção
@@ -19,17 +25,36 @@ func _physics_process(delta):
 	if character_diraction.x > 0: %sprite.flip_h = false
 	elif character_diraction.x < 0: %sprite.flip_h = true
 		
-		#correr
-	if Input.is_action_pressed("sprint") and sprint_bar.value > 0:	
-		sprint_bar.value -= sprint_bar.step
-		sprint = true
-		print(sprint_bar.value)
-	else:
-		sprint_bar.value += sprint_bar.step
-		sprint = false
-		print(sprint_bar.value)
+		#regenerar
+	if !can_regen and !sprint and sprint_bar.value != 5.0: 
+		can_start_timer = true
+		if can_start_timer:
+			start_timer += delta
+			if start_timer >= time_to_wait:
+				can_regen = true
+				can_start_timer = false
+				start_timer = 0
+				
+	if sprint_bar.value == 5.0:
+		can_regen = false
+		
+	if can_regen == true:
+		sprint_bar.value += 0.5
+		can_start_timer = false
+		start_timer = 0
 	
-
+	if Input.is_action_pressed("sprint"):
+		if sprint_bar.value > 0:
+			sprint_speed = initial_sprint_speed
+			
+			sprint = true
+			sprint_bar.value -= 0.1
+		else:
+			sprint_speed = movement_speed
+	
+	if Input.is_action_just_released("sprint"):
+		sprint = false
+		
 	
 	if character_diraction:
 		#verifica se jogador está correndo 
