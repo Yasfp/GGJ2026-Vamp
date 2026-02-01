@@ -2,18 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://chk4j6g0xdb4y" path="res://scenes/player_1.tscn" id="1_brupb"]
 [ext_resource type="Texture2D" uid="uid://wf2b4yx8h2m0" path="res://assets/asset_temp/Sem título.png" id="1_onqr8"]
-[ext_resource type="Script" uid="uid://b84icfcny6xca" path="res://Script/camera_2d.gd" id="3_ycayy"]
+[ext_resource type="Script" uid="uid://b84icfcny6xca" path="res://Script/camera/camera_2d.gd" id="3_ycayy"]
 [ext_resource type="PackedScene" uid="uid://b46eaa1fsy8ud" path="res://scenes/player_2.tscn" id="4_bw6k5"]
+[ext_resource type="PackedScene" uid="uid://bxji3tag348jc" path="res://scenes/villager.tscn" id="5_y3j0m"]
+[ext_resource type="PackedScene" uid="uid://c4tt8tdm1pq6u" path="res://scenes/guard.tscn" id="6_rurhu"]
 
 [node name="game_scene" type="Node2D" unique_id=215251995]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=172505222]
+[node name="background" type="Sprite2D" parent="." unique_id=172505222]
 position = Vector2(-0.5, -1)
 scale = Vector2(2.7591913, 2.4429529)
 texture = ExtResource("1_onqr8")
 
 [node name="player_1" parent="." unique_id=1526809041 instance=ExtResource("1_brupb")]
-movement_speed = 150.0
 
 [node name="player" parent="." unique_id=75589651 instance=ExtResource("4_bw6k5")]
 position = Vector2(161, 0)
@@ -23,3 +24,20 @@ movement_speed = 150.0
 physics_interpolation_mode = 1
 zoom = Vector2(2, 2)
 script = ExtResource("3_ycayy")
+
+[node name="villager" parent="." unique_id=1047230856 instance=ExtResource("5_y3j0m")]
+position = Vector2(0, 64)
+
+[node name="guard" parent="." unique_id=326569592 instance=ExtResource("6_rurhu")]
+position = Vector2(-1, -87)
+
+[node name="patrol_points" type="Node" parent="." unique_id=445030559]
+
+[node name="patrolPoint_1" type="Marker2D" parent="patrol_points" unique_id=2074249691]
+position = Vector2(0, -125)
+
+[node name="patrolPoint_2" type="Marker2D" parent="patrol_points" unique_id=287469184]
+position = Vector2(156, -125)
+
+[node name="patrolPoint_3" type="Marker2D" parent="patrol_points" unique_id=370180486]
+position = Vector2(81, -68)

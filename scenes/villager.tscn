@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://bxji3tag348jc"]
+
+[ext_resource type="Script" uid="uid://fjpm2oi4g16c" path="res://Script/movement/entity_movement.gd" id="1_37mdv"]
+[ext_resource type="Texture2D" uid="uid://bdosc7s6doyiy" path="res://assets/asset_temp/DinoSprites - mort.png" id="1_kufqh"]
+[ext_resource type="Script" uid="uid://cvai0rlvi7pcy" path="res://Script/states/state_machine.gd" id="2_bjpa3"]
+[ext_resource type="Script" uid="uid://ck7xp0vofqkf6" path="res://Script/states/Villagers/wander.gd" id="3_i0lkk"]
+[ext_resource type="Script" uid="uid://c4e8rxjwu8y83" path="res://Script/states/Villagers/flee.gd" id="5_6eh0s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bjpa3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2els")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0lkk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_37mdv"]
+radius = 31.144823
+
+[node name="villager" type="CharacterBody2D" unique_id=1047230856]
+script = ExtResource("1_37mdv")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=664561573]
+unique_name_in_owner = true
+modulate = Color(0, 1, 0, 1)
+sprite_frames = SubResource("SpriteFrames_bjpa3")
+animation = &"Walk"
+autoplay = "Idle"
+
+[node name="object_collision" type="CollisionShape2D" parent="." unique_id=1901271296]
+shape = SubResource("RectangleShape2D_i0lkk")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="alert_area" type="CollisionShape2D" parent="." unique_id=537194422]
+shape = SubResource("CircleShape2D_37mdv")
+debug_color = Color(0.8941478, 0.29525104, 0.33427, 0.41960785)
+
+[node name="stateMachine" type="Node" parent="." unique_id=1002445515 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_bjpa3")
+initial_state = NodePath("vilWander")
+
+[node name="vilWander" type="Node" parent="stateMachine" unique_id=1210820912 node_paths=PackedStringArray("entity")]
+script = ExtResource("3_i0lkk")
+entity = NodePath("../..")
+metadata/_custom_type_script = "uid://ck7xp0vofqkf6"
+
+[node name="vilFlee" type="Node" parent="stateMachine" unique_id=934068102 node_paths=PackedStringArray("entity")]
+script = ExtResource("5_6eh0s")
+entity = NodePath("../..")

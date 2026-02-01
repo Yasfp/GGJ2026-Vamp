@@ -14,3 +14,15 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+scenes/player_2.tscn
+Script/movement/player1_movement.gd
+Script/movement/player1_movement.gd.uid
+Script/movement/player2_movement.gd
+Script/movement/player2_movement.gd.uid
+Script/player1_movement.gd
+Script/player1_movement.gd.uid
+Script/player1_script.gd
+Script/player1_script.gd.uid
+Script/player2_movement.gd.uid
+Script/player2_script.gd.uid
+scenes/player_1.tscn
