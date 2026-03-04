@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bl2u8ir7cset5"]
+
+[ext_resource type="Texture2D" uid="uid://wf2b4yx8h2m0" path="res://assets/asset_temp/Sem título.png" id="1_0dycs"]
+[ext_resource type="PackedScene" uid="uid://chk4j6g0xdb4y" path="res://scenes/entities/player_1.tscn" id="2_2tb1d"]
+[ext_resource type="PackedScene" uid="uid://b46eaa1fsy8ud" path="res://scenes/entities/player_2.tscn" id="3_2splt"]
+[ext_resource type="Script" uid="uid://b84icfcny6xca" path="res://scripts/camera/camera_2d.gd" id="4_5rgpi"]
+[ext_resource type="PackedScene" uid="uid://bxji3tag348jc" path="res://scenes/entities/villager.tscn" id="5_u75nb"]
+[ext_resource type="PackedScene" uid="uid://c4tt8tdm1pq6u" path="res://scenes/entities/guard.tscn" id="6_4u02a"]
+
+[node name="game_scene" type="Node2D" unique_id=215251995]
+
+[node name="background" type="Sprite2D" parent="." unique_id=172505222]
+position = Vector2(-0.5, -1)
+scale = Vector2(2.7591913, 2.4429529)
+texture = ExtResource("1_0dycs")
+
+[node name="player_1" parent="." unique_id=1526809041 instance=ExtResource("2_2tb1d")]
+position = Vector2(-2, -64)
+
+[node name="player_2" parent="." unique_id=75589651 instance=ExtResource("3_2splt")]
+position = Vector2(161, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1272904100]
+physics_interpolation_mode = 1
+zoom = Vector2(2, 2)
+script = ExtResource("4_5rgpi")
+
+[node name="villager" parent="." unique_id=1047230856 node_paths=PackedStringArray("personagem") instance=ExtResource("5_u75nb")]
+position = Vector2(0, 64)
+personagem = NodePath(".")
+
+[node name="guard" parent="." unique_id=326569592 node_paths=PackedStringArray("personagem") instance=ExtResource("6_4u02a")]
+position = Vector2(20, -64)
+personagem = NodePath(".")
+
+[node name="patrol_points" type="Node" parent="." unique_id=445030559]
+
+[node name="patrolPoint_1" type="Marker2D" parent="patrol_points" unique_id=2074249691 groups=["patrol_points"]]
+position = Vector2(0, -125)
+
+[node name="patrolPoint_2" type="Marker2D" parent="patrol_points" unique_id=287469184 groups=["patrol_points"]]
+position = Vector2(156, -125)
+
+[node name="patrolPoint_3" type="Marker2D" parent="patrol_points" unique_id=370180486 groups=["patrol_points"]]
+position = Vector2(81, -68)

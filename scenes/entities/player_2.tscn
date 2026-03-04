@@ -1,38 +1,38 @@
-[gd_scene format=3 uid="uid://chk4j6g0xdb4y"]
+[gd_scene format=3 uid="uid://b46eaa1fsy8ud"]
 
-[ext_resource type="Texture2D" uid="uid://bdosc7s6doyiy" path="res://assets/asset_temp/DinoSprites - mort.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://chsp7j05jjthu" path="res://Script/player1_script.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://d17f8hhsyk1ql" path="res://scripts/player2_script.gd" id="1_s551d"]
+[ext_resource type="Texture2D" uid="uid://bdosc7s6doyiy" path="res://assets/asset_temp/DinoSprites - mort.png" id="2_yjax8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
-atlas = ExtResource("1_3vyb7")
+atlas = ExtResource("2_yjax8")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
-atlas = ExtResource("1_3vyb7")
+atlas = ExtResource("2_yjax8")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
-atlas = ExtResource("1_3vyb7")
+atlas = ExtResource("2_yjax8")
 region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
-atlas = ExtResource("1_3vyb7")
+atlas = ExtResource("2_yjax8")
 region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
-atlas = ExtResource("1_3vyb7")
+atlas = ExtResource("2_yjax8")
 region = Rect2(96, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
-atlas = ExtResource("1_3vyb7")
+atlas = ExtResource("2_yjax8")
 region = Rect2(120, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
-atlas = ExtResource("1_3vyb7")
+atlas = ExtResource("2_yjax8")
 region = Rect2(144, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
-atlas = ExtResource("1_3vyb7")
+atlas = ExtResource("2_yjax8")
 region = Rect2(168, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4qnqm"]
@@ -88,19 +88,19 @@ func _process(delta: float) -> void:
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
 
-[node name="player" type="CharacterBody2D" unique_id=1526809041]
+[node name="player" type="CharacterBody2D" unique_id=1526809041 groups=["player"]]
+modulate = Color(0.1254902, 0.043137256, 1, 1)
 motion_mode = 1
-script = ExtResource("1_g2els")
+script = ExtResource("1_s551d")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1570333320]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_4qnqm")
-animation = &"Walk"
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.59349793
 script = SubResource("GDScript_qhqgy")
 
-[node name="ProgressBar" type="ProgressBar" parent="sprite" unique_id=1154621207]
+[node name="ProgressBar" type="ProgressBar" parent="sprite" unique_id=1931777630]
 anchors_preset = -1
 anchor_left = 0.47900003
 anchor_top = -0.083000004

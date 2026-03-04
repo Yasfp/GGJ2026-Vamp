@@ -1,5 +1,5 @@
 extends state
-class_name vilWander
+class_name vil_Wander
 
 func randomize_wander():
 	move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()

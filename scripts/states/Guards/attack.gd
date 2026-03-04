@@ -1,5 +1,5 @@
 extends state
-class_name guardAttack
+class_name guard_attack
 
 
 # Called when the node enters the scene tree for the first time.

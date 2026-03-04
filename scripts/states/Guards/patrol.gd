@@ -1,5 +1,5 @@
 extends state
-class_name guardPatrol
+class_name guard_patrol
 
 @export var group_name: String
 
@@ -7,7 +7,7 @@ var positions: Array
 var temp_positions: Array
 var current_position: Marker2D
 
-func _ready() -> void:
+func Enter() -> void:
 	positions = get_tree().get_nodes_in_group(group_name)
 	_get_positions()
 	_get_next_position()
@@ -15,6 +15,7 @@ func _ready() -> void:
 func Physics_Update(_delta: float):
 	if entity.global_position.distance_to(current_position.position) < 10:
 		_get_next_position()
+	entity.velocity = move_direction * move_speed
 		
 func _get_positions():
 	temp_positions = positions.duplicate()

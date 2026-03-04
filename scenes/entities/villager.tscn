@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bxji3tag348jc"]
 
-[ext_resource type="Script" uid="uid://fjpm2oi4g16c" path="res://Script/movement/entity_movement.gd" id="1_37mdv"]
+[ext_resource type="Script" uid="uid://fjpm2oi4g16c" path="res://scripts/movement/entity_movement.gd" id="1_37mdv"]
 [ext_resource type="Texture2D" uid="uid://bdosc7s6doyiy" path="res://assets/asset_temp/DinoSprites - mort.png" id="1_kufqh"]
-[ext_resource type="Script" uid="uid://cvai0rlvi7pcy" path="res://Script/states/state_machine.gd" id="2_bjpa3"]
-[ext_resource type="Script" uid="uid://ck7xp0vofqkf6" path="res://Script/states/Villagers/wander.gd" id="3_i0lkk"]
-[ext_resource type="Script" uid="uid://c4e8rxjwu8y83" path="res://Script/states/Villagers/flee.gd" id="5_6eh0s"]
+[ext_resource type="Script" uid="uid://cvai0rlvi7pcy" path="res://scripts/states/state_machine.gd" id="2_bjpa3"]
+[ext_resource type="Script" uid="uid://ck7xp0vofqkf6" path="res://scripts/states/Villagers/wander.gd" id="3_i0lkk"]
+[ext_resource type="Script" uid="uid://c4e8rxjwu8y83" path="res://scripts/states/Villagers/flee.gd" id="5_6eh0s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_kufqh")
@@ -77,13 +77,12 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0lkk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_37mdv"]
-radius = 31.144823
-
 [node name="villager" type="CharacterBody2D" unique_id=1047230856]
 script = ExtResource("1_37mdv")
 
-[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=664561573]
+[node name="visual_components" type="Marker2D" parent="." unique_id=254379179]
+
+[node name="sprite" type="AnimatedSprite2D" parent="visual_components" unique_id=664561573]
 unique_name_in_owner = true
 modulate = Color(0, 1, 0, 1)
 sprite_frames = SubResource("SpriteFrames_bjpa3")
@@ -93,10 +92,6 @@ autoplay = "Idle"
 [node name="object_collision" type="CollisionShape2D" parent="." unique_id=1901271296]
 shape = SubResource("RectangleShape2D_i0lkk")
 debug_color = Color(0, 0, 0, 0.41960785)
-
-[node name="alert_area" type="CollisionShape2D" parent="." unique_id=537194422]
-shape = SubResource("CircleShape2D_37mdv")
-debug_color = Color(0.8941478, 0.29525104, 0.33427, 0.41960785)
 
 [node name="stateMachine" type="Node" parent="." unique_id=1002445515 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_bjpa3")
